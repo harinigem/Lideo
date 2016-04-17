@@ -49,7 +49,11 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.POST)
 	public Map<String, Object> createUser(@RequestBody Map<String, Object> userMap) {
 		Map<String, Object> response = new HashMap<String, Object>();
-		User user = new User((String) userMap.get("name"), (String) userMap.get("email"));
+		String email = (String) userMap.get("email");
+		User user = userRepository.findByEmail(email);
+		if(user == null) {
+			user = new User((String) userMap.get("name"), email);
+		}
 		response.put("userId", userRepository.save(user).getId());
 		return response;
 	}
