@@ -12,4 +12,6 @@ public interface TopicRepository extends MongoRepository<Topic, String>{
 	
 	public List<Topic> findByLevel(String level);
 	
+	public List<Topic> findByIdIn(List<String> topics);
+	
 }
