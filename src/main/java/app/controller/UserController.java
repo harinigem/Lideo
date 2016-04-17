@@ -131,7 +131,11 @@ public class UserController {
 		Map<String, Object> response = new HashMap<String, Object>();
 		User user = userRepository.findOne(userId);
 		List<String> topicsAttempted = user.getTopicsAttempted();
-		List<Topic> topicsList = topicRepository.findByIdIn(topicsAttempted);
+		System.out.println("List of topics attempted " + topicsAttempted);
+		List<Topic> topicsList = new ArrayList<>();
+		if(topicsAttempted != null) {
+			topicRepository.findByIdIn(topicsAttempted);
+		}
 		response.put("topics", topicsList);
 		return response;
 	}
