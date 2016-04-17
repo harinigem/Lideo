@@ -134,7 +134,7 @@ public class UserController {
 		System.out.println("List of topics attempted " + topicsAttempted);
 		List<Topic> topicsList = new ArrayList<>();
 		if(topicsAttempted != null) {
-			topicRepository.findByIdIn(topicsAttempted);
+			topicsList = topicRepository.findByIdIn(topicsAttempted);
 		}
 		response.put("topics", topicsList);
 		return response;
