@@ -61,6 +61,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.GET)
 	public Map<String, Object> getAllUsers() {
 		Map<String, Object> response = new HashMap<String, Object>();
+		System.out.println("In user contr");
 		response.put("users", userRepository.findAll());
 		return response;
 	}
@@ -87,6 +88,7 @@ public class UserController {
 		inputFile.save();
 
 		User user = userRepository.findOne(userId);
+		
 		if (user != null) {
 			List<String> topicsAttempted = user.getTopicsAttempted();
 			if (topicsAttempted == null)
